@@ -1,6 +1,6 @@
 <template>
 <div class="search-box">
-    <input type="text" name="" placeholder="Type to search" class="search-box">
+    <input type="text" name="" placeholder="Type to search" class="search-box" v-model="search">
     <a href="#" class="search-btn">
 
     </a>
@@ -11,7 +11,16 @@ export default {
     name: 'SearchBar',
     data(){
         return{
+            search: '',
 
+        }
+    },
+    computed: {
+        filteredPokemons: function(){
+            return [this.pokemons.filter((pokemon) =>{
+                return pokemon.name.match(this.search);
+            }
+            )]
         }
     }
 }
